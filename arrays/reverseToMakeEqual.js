@@ -3,10 +3,16 @@
 
 // Add any helper functions you may need here
 
-
 function areTheyEqual(array_a, array_b){
   // Write your code here
-  
+  array_a.sort((a, b) => a - b);
+  array_b.sort((a, b) => a - b);
+  for (let i = 0; i < array_a.length; i++) {
+    if (array_a[i] !== array_b[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 
