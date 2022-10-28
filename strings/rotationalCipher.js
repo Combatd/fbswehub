@@ -3,10 +3,21 @@
 
 // Add any helper functions you may need here
 
-
 function rotationalCipher(input, rotationFactor) {
   // Write your code here
-  return "";
+  const alphabet = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  let rotatedString = '';
+  for (let i = 0; i < input.length; i++) {
+    let character = input[i];
+    if (alphabet.includes(character)) {
+      let characterIndexInAlphabet = alphabet.indexOf(character);
+      rotatedString = rotatedString.concat(alphabet[characterIndexInAlphabet + rotationFactor]);
+    } else {
+      rotatedString = rotatedString.concat(character);
+    }
+  }
+  return rotatedString;
 }
 
 
