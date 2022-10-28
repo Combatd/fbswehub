@@ -5,16 +5,21 @@
 
 function rotationalCipher(input, rotationFactor) {
   // Write your code here
+  // We need to solve the "out of bounds undefined"
   const alphabet = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const numbers = '0123456789012345678901234567890123456789012345678901234567890'
 
   let rotatedString = '';
   for (let i = 0; i < input.length; i++) {
     let character = input[i];
+    let characterIndexInAlphabet = alphabet.indexOf(character);
+    let characterIndexInNumbers = numbers.indexOf(character);
     if (alphabet.includes(character)) {
-      let characterIndexInAlphabet = alphabet.indexOf(character);
-      rotatedString = rotatedString.concat(alphabet[characterIndexInAlphabet + rotationFactor]);
+      rotatedString = rotatedString + alphabet[characterIndexInAlphabet + rotationFactor];
+    } else if (numbers.includes(character)) {
+      rotatedString = rotatedString + numbers[characterIndexInNumbers + rotationFactor];
     } else {
-      rotatedString = rotatedString.concat(character);
+      rotatedString = rotatedString + character;
     }
   }
   return rotatedString;
